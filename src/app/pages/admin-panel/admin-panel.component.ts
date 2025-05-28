@@ -95,7 +95,7 @@ export class AdminPanelComponent implements OnInit {
   }
 
   isAgent(user: any): boolean {
-    return user.roles.some((r: any) => r.name === 'AGENT');
+    return user.roles.some((r: any) => r.name === 'ROLE_AGENT');
   }
 
   promoteToAgent(userId: number) {
