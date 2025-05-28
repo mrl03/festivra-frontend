@@ -1,0 +1,69 @@
+<div *ngIf="event">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img
+          [src]="event.imageUrl"
+          class="img-fluid rounded shadow-sm"
+          [alt]="event.name"
+          style="max-height: 400px; object-fit: cover; width: 100%"
+        />
+      </div>
+      <div class="col-lg-6">
+        <h2 class="fw-bold mb-3">{{ event.name }}</h2>
+        <p class="mb-3 text-muted">{{ event.description }}</p>
+        <p><strong>📍 Ubicación:</strong> {{ event.location }}</p>
+        <p><strong>📅 Fecha:</strong> {{ event.date }}</p>
+        <p><strong>🎫 Aforo:</strong> {{ event.capacity }}</p>
+
+        <button class="btn btn-primary mt-3 px-4" (click)="reservar()">
+          Reservar Entrada
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div
+    class="modal fade"
+    id="reservationModal"
+    tabindex="-1"
+    aria-labelledby="reservationModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div
+          class="modal-header"
+          [ngClass]="{
+            'bg-success': reservationSuccess,
+            'bg-danger': !reservationSuccess
+          }"
+        >
+          <h5 class="modal-title text-white" id="reservationModalLabel">
+            {{ reservationSuccess ? "Reserva Exitosa" : "Error" }}
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Cerrar"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0">{{ reservationMessage }}</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            *ngIf="reservationSuccess"
+            class="btn btn-primary"
+            (click)="goToReservations()"
+          >
+            Ver mis reservas
+          </button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

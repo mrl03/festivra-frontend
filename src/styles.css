@@ -1,0 +1,47 @@
+:root {
+  --color-primary: #f26422;
+  --color-secondary: #fdddcb;
+  --color-dark: #0d2c40;
+  --color-light-bg: #fdf9f2;
+  --color-text: #4a4a4a;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-light-bg);
+  color: var(--color-text);
+}
+
+.hero-section {
+  background: linear-gradient(rgba(13, 44, 64, 0.6), rgba(13, 44, 64, 0.6)),
+    url("https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?cs=srgb&dl=pexels-vishnurnair-1105666.jpg&fm=jpg")
+      center/cover no-repeat;
+  color: white;
+  min-height: 100vh;
+}
+.btn-primary {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #08202e;
+  border-color: #08202e;
+}
+
+.card-title {
+  color: var(--color-dark);
+}
+
+footer {
+  font-size: 0.9rem;
+}

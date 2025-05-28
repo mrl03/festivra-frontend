@@ -1,0 +1,50 @@
+<div class="container py-5" style="max-width: 500px">
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <h3 class="text-center mb-4 fw-bold">Crear Cuenta</h3>
+
+      <form (ngSubmit)="submit()">
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Nombre completo</label>
+          <input
+            [(ngModel)]="form.fullName"
+            name="fullName"
+            class="form-control"
+            required
+            placeholder="Tu nombre completo"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input
+            [(ngModel)]="form.email"
+            name="email"
+            class="form-control"
+            required
+            type="email"
+            placeholder="tucorreo@ejemplo.com"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input
+            [(ngModel)]="form.password"
+            name="password"
+            class="form-control"
+            required
+            type="password"
+            placeholder="********"
+          />
+        </div>
+
+        <div *ngIf="error" class="alert alert-danger">
+          {{ error }}
+        </div>
+
+        <button class="btn btn-primary w-100" type="submit">Registrarse</button>
+      </form>
+    </div>
+  </div>
+</div>

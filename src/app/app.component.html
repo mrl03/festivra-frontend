@@ -1,0 +1,29 @@
+<div class="d-flex flex-column min-vh-100">
+  <!-- Admin logout bar -->
+  <div *ngIf="isAdminOrAgent()" class="d-flex justify-content-end p-3 bg-light">
+    <button class="btn btn-danger" (click)="logout()">Cerrar sesión</button>
+  </div>
+
+  <!-- Navbar for non-admin/agent -->
+  <app-navbar *ngIf="!isAdminOrAgent()"></app-navbar>
+
+  <!-- Main Content -->
+  <div class="flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-3 shadow-sm mt-auto">
+    <div class="container text-center">
+      <p class="mb-1">
+        &copy; {{ year }} Festivra. Todos los derechos reservados.
+      </p>
+      <p class="mb-0">
+        Contacto:
+        <a href="mailto:contact&#64;festivra.com" class="text-warning"
+          >contact&#64;festivra.com</a
+        >
+      </p>
+    </div>
+  </footer>
+</div>

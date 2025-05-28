@@ -1,0 +1,31 @@
+<div class="container py-5">
+  <h2 class="mb-4 text-center fw-bold">Mis Reservas</h2>
+
+  <div *ngIf="reservations.length === 0" class="text-center text-muted">
+    No tienes reservas aún.
+  </div>
+
+  <div class="row" *ngIf="reservations.length > 0">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let res of reservations">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-semibold">{{ res.event.name }}</h5>
+          <p class="mb-2 text-muted small">
+            {{ res.event.description }}
+          </p>
+          <p class="mb-1"><strong>Fecha:</strong> {{ res.event.date }}</p>
+          <p class="mb-3">
+            <strong>Ubicación:</strong> {{ res.event.location }}
+          </p>
+
+          <button
+            class="btn btn-outline-primary mt-auto w-100"
+            (click)="download(res.id)"
+          >
+            Descargar entrada
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

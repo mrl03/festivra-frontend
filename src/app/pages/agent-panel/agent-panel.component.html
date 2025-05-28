@@ -1,0 +1,118 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold">Panel de Agente</h2>
+
+  <!-- Crear/Editar Evento -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5 class="mb-3">
+        {{ form.id ? "Editar Evento" : "Crear Nuevo Evento" }}
+      </h5>
+      <form (ngSubmit)="submit()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Nombre</label>
+            <input
+              class="form-control"
+              [(ngModel)]="form.name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Ubicación</label>
+            <input
+              class="form-control"
+              [(ngModel)]="form.location"
+              name="location"
+              required
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="form-label">Descripción</label>
+            <textarea
+              class="form-control"
+              rows="3"
+              [(ngModel)]="form.description"
+              name="description"
+              required
+            ></textarea>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Fecha</label>
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="form.date"
+              name="date"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Aforo</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="form.capacity"
+              name="capacity"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">URL de Imagen</label>
+            <input
+              class="form-control"
+              [(ngModel)]="form.imageUrl"
+              name="imageUrl"
+              required
+            />
+          </div>
+        </div>
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary">
+            {{ form.id ? "Actualizar" : "Crear" }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary ms-2"
+            (click)="cancelEdit()"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lista de Eventos -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-body">
+      <h5 class="mb-3">Eventos</h5>
+      <ul class="list-group">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+          *ngFor="let event of events"
+        >
+          <div>
+            <strong>{{ event.name }}</strong> - {{ event.date }} ({{
+              event.location
+            }})
+          </div>
+          <div>
+            <button
+              class="btn btn-sm btn-outline-warning me-2"
+              (click)="editEvent(event)"
+            >
+              Editar
+            </button>
+            <button
+              class="btn btn-sm btn-outline-danger"
+              (click)="deleteEvent(event.id)"
+            >
+              Eliminar
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

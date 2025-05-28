@@ -1,0 +1,23 @@
+<div
+  class="card h-100 shadow-sm border-0 hover-shadow"
+  style="cursor: pointer"
+  (click)="router.navigate(['/events', event.id])"
+>
+  <img
+    [src]="event.imageUrl"
+    class="card-img-top"
+    [alt]="event.name"
+    style="height: 200px; object-fit: cover"
+  />
+
+  <div class="card-body d-flex flex-column justify-content-between">
+    <h5 class="card-title fw-semibold">{{ event.name }}</h5>
+
+    <p class="card-text text-muted mb-1">
+      <strong>Fecha:</strong> {{ event.date }}
+    </p>
+    <p class="card-text text-muted">
+      <strong>Ubicación:</strong> {{ event.location }}
+    </p>
+  </div>
+</div>

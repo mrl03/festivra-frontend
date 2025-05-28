@@ -1,0 +1,45 @@
+<div class="container py-5">
+  <h2 class="text-center fw-bold text-dark mb-4">Explora Eventos</h2>
+
+  <!-- Filtros -->
+  <form
+    (ngSubmit)="aplicarFiltros()"
+    class="row g-3 align-items-end mb-5 bg-light p-4 rounded shadow-sm"
+  >
+    <div class="col-md-5">
+      <label class="form-label fw-semibold">Ubicación</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Ej. Madrid, Barcelona..."
+        [(ngModel)]="filtros.location"
+        name="location"
+      />
+    </div>
+    <div class="col-md-5">
+      <label class="form-label fw-semibold">Fecha</label>
+      <input
+        type="date"
+        class="form-control"
+        [(ngModel)]="filtros.date"
+        name="date"
+      />
+    </div>
+    <div class="col-md-2 d-grid">
+      <button class="btn btn-primary" type="submit">Filtrar</button>
+    </div>
+  </form>
+
+  <!-- Lista de eventos -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let event of events">
+      <app-event-card [event]="event"></app-event-card>
+    </div>
+  </div>
+
+  <div *ngIf="events.length === 0" class="text-center mt-5">
+    <p class="text-muted">
+      No se encontraron eventos para los filtros seleccionados.
+    </p>
+  </div>
+</div>
