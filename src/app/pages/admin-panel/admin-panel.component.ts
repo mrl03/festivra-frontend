@@ -98,6 +98,11 @@ export class AdminPanelComponent implements OnInit {
     return user.roles.some((r: any) => r.name === 'ROLE_AGENT');
   }
 
+
+  isAdmin(user: any): boolean {
+    return user.roles.some((r: any) => r.name === 'ROLE_ADMIN');
+  }
+
   promoteToAgent(userId: number) {
     this.userService.promoteToAgent(userId).subscribe({
       next: () => {
