@@ -3,7 +3,7 @@
     <a
       class="navbar-brand fw-bold text-warning"
       routerLink="/"
-      (click)="collapseNavbar()"
+      (click)="hideNavbar()"
     >
       Festivra
     </a>
@@ -11,10 +11,7 @@
     <button
       class="navbar-toggler"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
+      (click)="toggleNavbar()"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
@@ -22,22 +19,21 @@
 
     <div
       class="collapse navbar-collapse justify-content-end"
-      id="navbarNav"
       #navbarCollapse
     >
       <ul class="navbar-nav align-items-center">
         <li class="nav-item" *ngIf="!isLoggedIn()">
-          <a class="nav-link" routerLink="/login" (click)="collapseNavbar()"
+          <a class="nav-link" routerLink="/login" (click)="hideNavbar()"
             >Iniciar sesión</a
           >
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn()">
-          <a class="nav-link" routerLink="/register" (click)="collapseNavbar()"
+          <a class="nav-link" routerLink="/register" (click)="hideNavbar()"
             >Registrarse</a
           >
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
-          <a class="nav-link" routerLink="/profile" (click)="collapseNavbar()"
+          <a class="nav-link" routerLink="/profile" (click)="hideNavbar()"
             >Mi Perfil</a
           >
         </li>

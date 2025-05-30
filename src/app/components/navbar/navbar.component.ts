@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+declare var bootstrap: any;
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -12,23 +14,42 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent {
   @ViewChild('navbarCollapse') navbarCollapse!: ElementRef;
+  menuOpen = false;
 
   constructor(public authService: AuthService, private router: Router) {}
 
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
-    this.collapseNavbar();
+    this.hideNavbar();
   }
 
   isLoggedIn(): boolean {
     return this.authService.isAuthenticated();
   }
 
-  collapseNavbar(): void {
-    const navbar = this.navbarCollapse?.nativeElement;
-    if (navbar && navbar.classList.contains('show')) {
-      navbar.classList.remove('show');
+  toggleNavbar(): void {
+    if (!this.navbarCollapse) return;
+
+    const collapseEl = this.navbarCollapse.nativeElement;
+    const bsCollapse = new bootstrap.Collapse(collapseEl, { toggle: false });
+
+    if (this.menuOpen) {
+      bsCollapse.hide();
+    } else {
+      bsCollapse.show();
+    }
+
+    this.menuOpen = !this.menuOpen;
+  }
+
+  hideNavbar(): void {
+    if (this.navbarCollapse?.nativeElement) {
+      const bsCollapse = new bootstrap.Collapse(this.navbarCollapse.nativeElement, {
+        toggle: false,
+      });
+      bsCollapse.hide();
+      this.menuOpen = false;
     }
   }
 }
