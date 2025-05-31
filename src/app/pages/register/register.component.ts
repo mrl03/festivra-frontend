@@ -63,7 +63,8 @@ export class RegisterComponent {
 
     this.authService.register(this.form).subscribe({
       next: (res: any) => {
-        this.router.navigate(['/login']);
+        this.authService.saveToken(res.token);
+          this.router.navigate(['/']);
       },
       error: (err: any) => {
         if (err.error?.error === 'Email already in use.') {
