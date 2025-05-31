@@ -10,9 +10,13 @@
             [(ngModel)]="form.fullName"
             name="fullName"
             class="form-control"
+            [class.is-invalid]="formErrors.fullName"
             required
             placeholder="Tu nombre completo"
           />
+          <div class="invalid-feedback" *ngIf="formErrors.fullName">
+            {{ formErrors.fullName }}
+          </div>
         </div>
 
         <div class="mb-3">
@@ -21,10 +25,14 @@
             [(ngModel)]="form.email"
             name="email"
             class="form-control"
+            [class.is-invalid]="formErrors.email"
             required
             type="email"
             placeholder="tucorreo@ejemplo.com"
           />
+          <div class="invalid-feedback" *ngIf="formErrors.email">
+            {{ formErrors.email }}
+          </div>
         </div>
 
         <div class="mb-3">
@@ -33,10 +41,14 @@
             [(ngModel)]="form.password"
             name="password"
             class="form-control"
+            [class.is-invalid]="formErrors.password"
             required
             type="password"
             placeholder="********"
           />
+          <div class="invalid-feedback" *ngIf="formErrors.password">
+            {{ formErrors.password }}
+          </div>
         </div>
 
         <div *ngIf="error" class="alert alert-danger">
@@ -45,6 +57,7 @@
 
         <button class="btn btn-primary w-100" type="submit">Registrarse</button>
       </form>
+
       <div class="text-center mt-3">
         <p class="mb-0">¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión aquí</a></p>
       </div>
