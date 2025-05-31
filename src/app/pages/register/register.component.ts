@@ -16,6 +16,7 @@ export class RegisterComponent {
     email: '',
     password: '',
   };
+  showPassword = false;
 
   error: string | null = null;
   formErrors = {
@@ -50,8 +51,8 @@ export class RegisterComponent {
     if (!this.form.password) {
       this.formErrors.password = 'La contraseña es requerida';
       isValid = false;
-    } else if (this.form.password.length < 6) {
-      this.formErrors.password = 'La contraseña debe tener al menos 6 caracteres';
+    } else if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(this.form.password)) {
+      this.formErrors.password = 'La contraseña debe tener al menos 8 caracteres, una letra, un número y un carácter especial';
       isValid = false;
     }
 
@@ -78,5 +79,9 @@ export class RegisterComponent {
         }
       },
     });
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 }

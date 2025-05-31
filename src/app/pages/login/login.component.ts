@@ -15,6 +15,7 @@ export class LoginComponent {
     email: '',
     password: '',
   };
+  showPassword = false;
 
   error: string | null = null;
   formErrors = {
@@ -75,5 +76,9 @@ export class LoginComponent {
         }
       },
     });
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 }

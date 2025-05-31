@@ -37,17 +37,26 @@
 
         <div class="mb-3">
           <label for="password" class="form-label">Contraseña</label>
-          <input
-            [(ngModel)]="form.password"
-            name="password"
-            class="form-control"
-            [class.is-invalid]="formErrors.password"
-            required
-            type="password"
-            placeholder="********"
-          />
-          <div class="invalid-feedback" *ngIf="formErrors.password">
-            {{ formErrors.password }}
+          <div class="input-group">
+            <input
+              [(ngModel)]="form.password"
+              name="password"
+              class="form-control"
+              [class.is-invalid]="formErrors.password"
+              required
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="********"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              (click)="togglePasswordVisibility()"
+            >
+              <i class="bi" [class.bi-eye]="!showPassword" [class.bi-eye-slash]="showPassword"></i>
+            </button>
+            <div class="invalid-feedback" *ngIf="formErrors.password">
+              {{ formErrors.password }}
+            </div>
           </div>
         </div>
 
