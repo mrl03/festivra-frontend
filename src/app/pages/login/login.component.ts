@@ -60,7 +60,9 @@ export class LoginComponent {
         } else if (decoded?.roles?.includes('ROLE_AGENT')) {
           this.router.navigate(['/agent/panel']);
         } else {
-          this.router.navigate(['/']);
+          const redirectUrl = localStorage.getItem('redirectUrl') || '/';
+          this.router.navigate([redirectUrl]);
+          localStorage.removeItem('redirectUrl');
         }
       },
       error: (err: any) => {

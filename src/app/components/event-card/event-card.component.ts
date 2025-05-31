@@ -30,6 +30,7 @@ export class EventCardComponent {
     eventClick.stopPropagation();
 
     if (!this.auth.isAuthenticated()) {
+      localStorage.setItem('redirectUrl', this.router.url);
       this.router.navigate(['/login']);
       return;
     }

@@ -64,7 +64,9 @@ export class RegisterComponent {
     this.authService.register(this.form).subscribe({
       next: (res: any) => {
         this.authService.saveToken(res.token);
-          this.router.navigate(['/']);
+        const redirectUrl = localStorage.getItem('redirectUrl') || '/';
+        this.router.navigate([redirectUrl]);
+        localStorage.removeItem('redirectUrl');
       },
       error: (err: any) => {
         if (err.error?.error === 'Email already in use.') {

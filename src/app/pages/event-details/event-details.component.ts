@@ -43,6 +43,7 @@ export class EventDetailsComponent implements OnInit {
 
   reservar(): void {
     if (!this.auth.isAuthenticated()) {
+      localStorage.setItem('redirectUrl', this.router.url);
       this.router.navigate(['/login']);
       return;
     }
